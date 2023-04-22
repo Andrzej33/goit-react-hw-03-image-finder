@@ -1,5 +1,5 @@
 // import { Component } from "react"
-import {toast} from 'react-toastify'
+// import {toast} from 'react-toastify'
 
 export const Searchbar =({onSubmit}) =>  {
 // let imageName= '';
@@ -9,7 +9,8 @@ const handleSubmit = e => {
   const formData = new FormData(e.target)
   const imageName =formData.get('name').toLowerCase()
   if(imageName.trim()===''){
-    toast('введіть пошуковий запит')
+    // toast.info('введіть пошуковий запит')
+    prompt('введіть пошуковий запит')
     return
   }
  

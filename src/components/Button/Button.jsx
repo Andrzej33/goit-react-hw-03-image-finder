@@ -1,14 +1,32 @@
-// import PropTypes from 'prop-types';
-
-export const IconButton = ({children,onClick,...allyProps}) => (
-    <button type='button' className='iconButton' onClick={onClick} {...allyProps}>{children}</button>
-)
+import PropTypes from 'prop-types';
 
 
-IconButton.defaultProps={
-    onClick:()=>null,
-    children: null,
+export const LoadMoreBtn = ({onLoadMore}) => {
+    return(
+        <button onClick={onLoadMore} type="button">
+          Load more
+        </button>
+    )
+
 }
+
+LoadMoreBtn.propTypes={
+    onLoadMore:PropTypes.func.isRequired,
+}
+
+
+
+
+
+// export const IconButton = ({children,onClick,...allyProps}) => (
+//     <button type='button' className='iconButton' onClick={onClick} {...allyProps}>{children}</button>
+// )
+
+
+// IconButton.defaultProps={
+//     onClick:()=>null,
+//     children: null,
+// }
 
 // IconButton.propTypes={
 //     onClick:PropTypes.func.isRequired,

@@ -9,8 +9,9 @@ const handleSubmit = e => {
   const formData = new FormData(e.target)
   const imageName =formData.get('name').toLowerCase()
   if(imageName.trim()===''){
-    // toast.info('введіть пошуковий запит')
+    // toast('введіть пошуковий запит')
     prompt('введіть пошуковий запит')
+  
     return
   }
  

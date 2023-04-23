@@ -77,7 +77,7 @@ return res.json()
     if(status==='rejected') {
       return <div>{error.message}</div>
     }
-    if(status==='resolved' && total>12){
+    if(status==='resolved'){
       return (
 <>
 <ul className="gallery">
@@ -86,20 +86,20 @@ return res.json()
         <ImageItem image={image}/>
       </li>)}
     </ul>
-        <LoadMoreBtn onLoadMore={this.loadNextPage}/>
+        {total>12 && (<LoadMoreBtn onLoadMore={this.loadNextPage}/>)}
 </>
       )
             }
-    if(status==='resolved') {
-      return (
-        <ul className="gallery">
+    // if(status==='resolved') {
+    //   return (
+    //     <ul className="gallery">
       
-      {images.map((image) => <li key={image.id}>
-        <ImageItem image={image}/>
-      </li>)}
-    </ul>
-      )
-      }
+    //   {images.map((image) => <li key={image.id}>
+    //     <ImageItem image={image}/>
+    //   </li>)}
+    // </ul>
+    //   )
+    //   }
    
     }}
     

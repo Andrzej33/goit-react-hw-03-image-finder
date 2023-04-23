@@ -18,7 +18,7 @@ export class App extends Component {
  
  
  searchSubmit = imageName=> {
-  console.log(imageName);
+  // console.log(imageName);
   this.setState({imageName})
  }
  
@@ -28,9 +28,6 @@ export class App extends Component {
   return (
     <>
     <Searchbar onSubmit={this.searchSubmit}/>
-    <div>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum dolor dolorum iure corrupti pariatur soluta sapiente velit, eaque aut quos voluptatum odit nostrum amet quibusdam optio. Doloribus suscipit iusto hic.
-    </div>
     <ImageGallery imageName={this.state.imageName}/>
      <ToastContainer autoClose={3000}/>
     {this.state.loading && <h1>завантажуємо</h1>}

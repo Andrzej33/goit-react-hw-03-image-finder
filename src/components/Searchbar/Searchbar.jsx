@@ -1,5 +1,6 @@
 // import { Component } from "react"
 // import {toast} from 'react-toastify'
+import { SlMagnifier } from "react-icons/sl";
 
 export const Searchbar =({onSubmit}) =>  {
 // let imageName= '';
@@ -22,7 +23,7 @@ const handleSubmit = e => {
   <header className="searchbar">
   <form className="form" onSubmit={handleSubmit} >
     <button type="submit" className="button">
-      <span className="button-label">Search</span>
+      <span className="button-label"><SlMagnifier size={15}/></span>
     </button>
 
     <input

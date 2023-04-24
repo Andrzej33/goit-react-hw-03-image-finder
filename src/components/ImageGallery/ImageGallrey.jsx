@@ -78,30 +78,37 @@ return res.json()
   };
 
 
-  toggleModal =(largeImageURL,alt)=>{
-    this.setState(({showModal})=>({showModal:!showModal,largeImageURL,alt}))
+  openModal =(largeImageURL,alt)=>{
+    // this.setState(({showModal})=>({showModal:!showModal,largeImageURL,alt}))
+    console.log(largeImageURL,alt);
   }
-  // openModal = (largeImageURL, alt) => {
+  closeModal = () => {
 
-  //   Використовуємо setState з функцією, яка приймає попередній стан і повертає новий.
-  //   this.setState(({ showModal }) => {
-  //     return { showModal: !showModal, largeImageURL, alt };
-  //   });
-  // };
-// openModal=()
+    this.setState({showModal:false})
+  };
+
+// openModal=(largeImageURL,alt) =>{
+//   this.setState({showModal:true,largeImageURL,alt})
+//   console.log(largeImageURL,alt);
+// }
 
   render() {
-    const{images,error,total,loading,page,showModal,largeImageURL,alt} = this.state
+    const{images,error,total,loading,page,showModal,} = this.state
    
     
       return (
 <>
-{showModal && <Modal><img src={largeImageURL} alt={alt} /></Modal>}
+
+{showModal && <Modal onClose={this.closeModal}>
+  </Modal>}
 <ul className="gallery">
 {error && (
               <div>{error}</div>
         )}
-      {images.map((image) => <li key={image.id} onClick={this.toggleModal(image.largeImageURL,image.tags)}>
+      {images.map((image) => <li key={image.id}
+      onClick={this.openModal(image.largeImageURL,image.tags)
+      }
+      >
         <ImageItem image={image}/>
       </li>)}
       {loading && <Loader />}
@@ -114,3 +121,8 @@ return res.json()
             }
 
           }
+
+
+
+
+          // <img src={largeImageURL} alt={alt}/>

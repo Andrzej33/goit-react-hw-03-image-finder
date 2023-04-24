@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import { Modal } from './Modal/Modal';
+
 import { Searchbar } from './Searchbar/Searchbar';
 import { ToastContainer } from 'react-toastify';
 import { ImageGallery } from './ImageGallery/ImageGallrey';
@@ -30,9 +30,9 @@ export class App extends Component {
     <Searchbar onSubmit={this.searchSubmit}/>
     <ImageGallery imageName={this.state.imageName}/>
      <ToastContainer autoClose={3000}/>
-    {this.state.loading && <h1>завантажуємо</h1>}
+    {/* {this.state.loading && <h1>завантажуємо</h1>} */}
     
-    <Modal><p>kjhlkjhkhj</p></Modal>
+    
     </>
   );
  }

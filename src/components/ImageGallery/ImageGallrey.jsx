@@ -1,7 +1,9 @@
 import { LoadMoreBtn } from "components/Button/Button";
 import { ImageItem } from "components/ImageGalleryItem/ImageGaleryItem";
 import {Loader} from "components/Loader/Loader"
-import { Component } from "react"
+import { Modal } from "components/Modal/Modal";
+import { Component } from "react";
+
 
 
 
@@ -18,6 +20,7 @@ export class ImageGallery extends Component {
     images:[],
     loading:false,
     error:null,
+    showModal:false,
   }
 
   componentDidUpdate(prevProps,prevState){
@@ -56,7 +59,7 @@ return res.json()
       }))
      
     
-    console.log(this.state.page);
+    // console.log(this.state.page);
   }
     ).catch(error => {
       this.setState({ error: error.message });
@@ -75,24 +78,37 @@ return res.json()
   };
 
 
+  toggleModal =(largeImageURL,alt)=>{
+    this.setState(({showModal})=>({showModal:!showModal,largeImageURL,alt}))
+  }
+  // openModal = (largeImageURL, alt) => {
+
+  //   Використовуємо setState з функцією, яка приймає попередній стан і повертає новий.
+  //   this.setState(({ showModal }) => {
+  //     return { showModal: !showModal, largeImageURL, alt };
+  //   });
+  // };
+// openModal=()
 
   render() {
-    const{images,error,total,loading,page} = this.state
+    const{images,error,total,loading,page,showModal,largeImageURL,alt} = this.state
    
     
       return (
-
+<>
+{showModal && <Modal><img src={largeImageURL} alt={alt} /></Modal>}
 <ul className="gallery">
 {error && (
               <div>{error}</div>
         )}
-      {images.map((image) => <li key={image.id}>
+      {images.map((image) => <li key={image.id} onClick={this.toggleModal(image.largeImageURL,image.tags)}>
         <ImageItem image={image}/>
       </li>)}
       {loading && <Loader />}
         {total/12 > page && (<LoadMoreBtn onLoadMore={this.loadNextPage}/>)}
+        
     </ul>
-    
+    </>
 
       )
             }

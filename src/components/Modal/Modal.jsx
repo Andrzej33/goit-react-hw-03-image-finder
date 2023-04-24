@@ -1,11 +1,14 @@
 import{createPortal} from 'react-dom'
+import { Overlay } from './Modal.styled'
+import { ModalImg } from './Modal.styled'
 
 const modalRoot = document.querySelector('#modal-root')
 
 export const Modal = ({children}) =>(
- createPortal(   <div className="overlay">
- <div className="modal">
+ createPortal(   <Overlay>
+ <ModalImg>
   {children}
- </div>
-</div>,modalRoot)
+  </ModalImg>
+ </Overlay>
+,modalRoot)
 )

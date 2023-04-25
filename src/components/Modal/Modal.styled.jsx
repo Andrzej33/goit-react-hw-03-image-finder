@@ -11,11 +11,13 @@ export const Overlay = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1200;
 `
 export const ModalImg = styled.div`
- max-width: 50vw;
-  max-height: 80vh;
+ max-width: 75%;
+  max-height: 80%;
+  display:flex;
 `
 
 

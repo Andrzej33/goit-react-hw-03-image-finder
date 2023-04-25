@@ -3,6 +3,7 @@ import { ImageItem } from "components/ImageGalleryItem/ImageGaleryItem";
 import {Loader} from "components/Loader/Loader"
 import { Modal } from "components/Modal/Modal";
 import { Component } from "react";
+import { GalleryList } from "./ImageGallery.styled";
 
 
 
@@ -77,10 +78,10 @@ return res.json()
     }));
   };
 
- // this.setState(({showModal})=>({showModal:!showModal,largeImageURL,alt}))
+
   openModal =(largeImageURL,alt)=>{
       this.setState({showModal:true,largeImageURL,alt})
-    console.log(largeImageURL,alt);
+    // console.log(largeImageURL,alt);
   }
   closeModal = () => {
 
@@ -102,16 +103,17 @@ return res.json()
 {showModal && <Modal onClose={this.closeModal}>
   <img src={largeImageURL} alt={alt} />
   </Modal>}
-<ul className="gallery">
+<GalleryList>
 {error && (
               <div>{error}</div>
         )}
         <ImageItem images={images} openModal={this.openModal}/>
      
-      {loading && <Loader />}
-        {total/12 > page && (<LoadMoreBtn onLoadMore={this.loadNextPage}/>)}
+      
         
-    </ul>
+        </GalleryList>
+        {loading && <Loader />}
+        {total/12 > page && (<LoadMoreBtn onLoadMore={this.loadNextPage}/>)}
     </>
 
       )

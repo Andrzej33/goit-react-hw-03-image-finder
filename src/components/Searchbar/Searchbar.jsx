@@ -1,9 +1,15 @@
 // import { Component } from "react"
 // import {toast} from 'react-toastify'
 import { SlMagnifier } from "react-icons/sl";
+import { SearchBtn, SearchbarHeader } from "./SearchBar.styled";
+import { Form } from "./SearchBar.styled";
+
+
+
+
 
 export const Searchbar =({onSubmit}) =>  {
-// let imageName= '';
+
 
 const handleSubmit = e => {
   e.preventDefault();
@@ -20,11 +26,11 @@ const handleSubmit = e => {
   e.target.reset()
 }
  return(
-  <header className="searchbar">
-  <form className="form" onSubmit={handleSubmit} >
-    <button type="submit" className="button">
-      <span className="button-label"><SlMagnifier size={15}/></span>
-    </button>
+  <SearchbarHeader>
+  <Form onSubmit={handleSubmit} >
+    <SearchBtn type="submit" >
+      <span ><SlMagnifier size={25}/></span>
+      </SearchBtn>
 
     <input
     name="name"
@@ -34,8 +40,8 @@ const handleSubmit = e => {
       autoFocus
       placeholder="Search images and photos"
     />
-  </form>
-</header>
+ </Form>
+  </SearchbarHeader>
  )
 
 

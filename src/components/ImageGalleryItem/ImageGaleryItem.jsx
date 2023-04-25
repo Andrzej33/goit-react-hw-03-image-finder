@@ -1,6 +1,9 @@
 
-export const ImageItem =({image}) => (
+export const ImageItem =({images,openModal}) => (
     <>
-    <img src={image.webformatURL} alt={image.tags} />
-    </>
+ {images.map((image) => <li key={image.id}
+      onClick={()=>{openModal(image.largeImageURL,image.tags)} } >
+      <img src={image.webformatURL} alt={image.tags} />  
+      </li>)}
+      </>
 )

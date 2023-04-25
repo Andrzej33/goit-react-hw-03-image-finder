@@ -77,9 +77,9 @@ return res.json()
     }));
   };
 
-
+ // this.setState(({showModal})=>({showModal:!showModal,largeImageURL,alt}))
   openModal =(largeImageURL,alt)=>{
-    // this.setState(({showModal})=>({showModal:!showModal,largeImageURL,alt}))
+      this.setState({showModal:true,largeImageURL,alt})
     console.log(largeImageURL,alt);
   }
   closeModal = () => {
@@ -93,24 +93,21 @@ return res.json()
 // }
 
   render() {
-    const{images,error,total,loading,page,showModal,} = this.state
+    const{images,error,total,loading,page,showModal,largeImageURL,alt} = this.state
    
     
       return (
 <>
 
 {showModal && <Modal onClose={this.closeModal}>
+  <img src={largeImageURL} alt={alt} />
   </Modal>}
 <ul className="gallery">
 {error && (
               <div>{error}</div>
         )}
-      {images.map((image) => <li key={image.id}
-      onClick={this.openModal(image.largeImageURL,image.tags)
-      }
-      >
-        <ImageItem image={image}/>
-      </li>)}
+        <ImageItem images={images} openModal={this.openModal}/>
+     
       {loading && <Loader />}
         {total/12 > page && (<LoadMoreBtn onLoadMore={this.loadNextPage}/>)}
         
@@ -125,4 +122,4 @@ return res.json()
 
 
 
-          // <img src={largeImageURL} alt={alt}/>
+          

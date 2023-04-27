@@ -24,13 +24,13 @@ export class ImageGallery extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (
       prevProps.imageName !== this.props.imageName ||
-      prevState.page !== this.state.page
+      (prevState.page !== this.state.page && prevState.total === this.state.total)
     ) {
       // Вмикаємо Loader і посилаємо запит на backend через fetch
 
       this.setState({ loading: true });
       fetch(
-        `${URL}?q=${this.props.imageName}&page=${this.state.page}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
+        `${URL}?q=${this.props.imageName}&page=${prevProps.imageName === this.props.imageName? this.state.page: 1}&key=${API_KEY}&image_type=photo&orientation=horizontal&per_page=12`
       )
         .then(res => {
           // Проводимо перевірку відповіді з backend: якщо відповідь ок - розпарсимо її, в іншому випадку створюємо помилку з вказанням проблеми
